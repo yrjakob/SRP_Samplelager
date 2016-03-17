@@ -1,0 +1,39 @@
+﻿<Window x:Class="SRP_SampleLager.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        Icon="/SRP_SampleLager;component/General/Warehouse.ico"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Sample Lager" Height="250" Width="300" ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Source="/SRP_SampleLager;component/General/Warehouse.ico" Margin="10" Height="100" />
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Username:" Style="{DynamicResource TextBlockStyle}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Username}" Style="{DynamicResource InputElement}"/>
+
+        <TextBlock Grid.Row="3" Text="Password:" Style="{DynamicResource TextBlockStyle}"/>
+        <PasswordBox Grid.Row="3" Grid.Column="1" Style="{DynamicResource InputElement}" Name="pbPassword">
+            <PasswordBox.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding LoginCommand, UpdateSourceTrigger=PropertyChanged}"
+                            CommandParameter="{Binding ElementName=pbPassword}"/>
+            </PasswordBox.InputBindings>
+        </PasswordBox>
+
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Style="{DynamicResource StackPanelStyle}">
+            <Button Content="Cancel" Style="{StaticResource ButtonStyle}" Command="{Binding CancelCommand}"/>
+            <Button Content="Login" Style="{StaticResource ButtonStyle}" Command="{Binding LoginCommand}"
+                    CommandParameter="{Binding ElementName=pbPassword}"/>
+        </StackPanel>
+    </Grid>
+</Window>
