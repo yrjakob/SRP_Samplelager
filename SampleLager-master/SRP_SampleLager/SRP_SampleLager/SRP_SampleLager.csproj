@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FB047ECF-2B3C-421D-9F19-962D85D984D9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SRP_SampleLager</RootNamespace>
+    <AssemblyName>SRP_SampleLager</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\..\..\..\Desktop\SRP_SampleLager2013\SRP_SampleLager\bin\Debug\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\SRP_SampleLager2013\SRP_SampleLager\bin\Debug\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="BuchungView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlatzView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditLagerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LagerListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LagerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MusterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OrtView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OverviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BuchungView.xaml.cs">
+      <DependentUpon>BuchungView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\LagerListView\LagerListViewDeleteRegalCommand.cs" />
+    <Compile Include="Commands\LagerListView\LagerListViewEditRegalCommand.cs" />
+    <Compile Include="Commands\LagerListView\LagerListViewMusterCommand.cs" />
+    <Compile Include="Commands\LagerListView\LagerListViewPlatzCommand.cs" />
+    <Compile Include="Commands\Lager\LagerEditCommand.cs" />
+    <Compile Include="Commands\Lager\LagerLoadedCommand.cs" />
+    <Compile Include="Commands\Lager\LagerNewOrtCommand.cs" />
+    <Compile Include="Commands\Lager\LagerSelectLagerCommand.cs" />
+    <Compile Include="Commands\Main\MainExportCommand.cs" />
+    <Compile Include="Commands\Main\MainLagerCommand.cs" />
+    <Compile Include="Commands\Main\MainLoadedCommand.cs" />
+    <Compile Include="Commands\Main\MainLogCommand.cs" />
+    <Compile Include="Commands\Main\MainLogoutCommand.cs" />
+    <Compile Include="Commands\Overview\OverviewBuchungCommand.cs" />
+    <Compile Include="Commands\Overview\OverviewLoadedCommand.cs" />
+    <Compile Include="Commands\Overview\OverviewMusterCommand.cs" />
+    <Compile Include="Factory\PlatzFactory.cs" />
+    <Compile Include="Model\Interface\IPlatzModel.cs" />
+    <Compile Include="Model\PlatzModel.cs" />
+    <Compile Include="PlatzView.xaml.cs">
+      <DependentUpon>PlatzView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\PlatzRepository.cs" />
+    <Compile Include="ViewModel\PlatzViewModel.cs" />
+    <Compile Include="View\EditLagerView.xaml.cs">
+      <DependentUpon>EditLagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Factory\BuchungFactory.cs" />
+    <Compile Include="Factory\BuchungUebersichtFactory.cs" />
+    <Compile Include="Factory\EditLagerFactory.cs" />
+    <Compile Include="Factory\LagerFactory.cs" />
+    <Compile Include="Factory\LagerListViewFactory.cs" />
+    <Compile Include="Factory\LagerListViewFactoryM.cs" />
+    <Compile Include="Factory\LagerListViewFactoryVM.cs" />
+    <Compile Include="Factory\MusterUebersichtFactory.cs" />
+    <Compile Include="Factory\OrtFactory.cs" />
+    <Compile Include="LagerListView.xaml.cs">
+      <DependentUpon>LagerListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LagerView.xaml.cs">
+      <DependentUpon>LagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BuchungModel.cs" />
+    <Compile Include="Model\EditLagerModel.cs" />
+    <Compile Include="Model\Interface\IBuchungModel.cs" />
+    <Compile Include="Model\Interface\IEditLagerModel.cs" />
+    <Compile Include="Model\Interface\ILagerListViewModel.cs" />
+    <Compile Include="Model\Interface\ILagerModel.cs" />
+    <Compile Include="Model\Interface\IMusterModel.cs" />
+    <Compile Include="Model\Interface\IOrtModel.cs" />
+    <Compile Include="Model\LagerListViewModel.cs" />
+    <Compile Include="Model\LagerModel.cs" />
+    <Compile Include="Model\MusterModel.cs" />
+    <Compile Include="Model\OrtModel.cs" />
+    <Compile Include="MusterView.xaml.cs">
+      <DependentUpon>MusterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\EditLagerRepository.cs" />
+    <Compile Include="Repository\LagerListViewRepository.cs" />
+    <Compile Include="ViewModel\BuchungViewModel.cs" />
+    <Compile Include="ViewModel\EditLagerViewModel.cs" />
+    <Compile Include="View\OrtView.xaml.cs">
+      <DependentUpon>OrtView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\BuchungRepository.cs" />
+    <Compile Include="Repository\LagerRepository.cs" />
+    <Compile Include="Repository\MusterRepository.cs" />
+    <Compile Include="Repository\OrtRepository.cs" />
+    <Compile Include="ViewModel\LagerListViewViewModel.cs" />
+    <Compile Include="ViewModel\LagerViewModel.cs" />
+    <Compile Include="ViewModel\MusterViewModel.cs" />
+    <Compile Include="ViewModel\OrtViewModel.cs" />
+    <Compile Include="View\ExportView.xaml.cs">
+      <DependentUpon>ExportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Factory\ExportFactory.cs" />
+    <Compile Include="Factory\LogFactory.cs" />
+    <Compile Include="Factory\OverviewFactory.cs" />
+    <Compile Include="General\Classes\AD_Access.cs" />
+    <Compile Include="General\Classes\cINIDatei.cs" />
+    <Compile Include="General\Classes\CommandPattern.cs" />
+    <Compile Include="General\Classes\CurrentUser.cs" />
+    <Compile Include="General\Classes\DBAccess.cs" />
+    <Compile Include="General\Classes\RelayCommand.cs" />
+    <Compile Include="General\Classes\ViewModelBase.cs" />
+    <Compile Include="General\Interfaces\IFactory.cs" />
+    <Compile Include="General\Interfaces\IRepository.cs" />
+    <Compile Include="Model\ExportModel.cs" />
+    <Compile Include="Model\Interface\IExportModel.cs" />
+    <Compile Include="Repository\ExportRepository.cs" />
+    <Compile Include="ViewModel\ExportViewModel.cs" />
+    <Compile Include="View\LogView.xaml.cs">
+      <DependentUpon>LogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Interface\ILoginModel.cs" />
+    <Compile Include="Model\Interface\ILogModel.cs" />
+    <Compile Include="Model\Interface\IMainModel.cs" />
+    <Compile Include="Model\Interface\IOverviewModel.cs" />
+    <Compile Include="Model\LoginModel.cs" />
+    <Compile Include="Model\LogModel.cs" />
+    <Compile Include="Model\MainModel.cs" />
+    <Compile Include="Model\OverviewModel.cs" />
+    <Compile Include="Repository\LogRepository.cs" />
+    <Compile Include="Repository\OverviewRepository.cs" />
+    <Compile Include="ViewModel\LogViewModel.cs" />
+    <Compile Include="ViewModel\OverviewViewModel.cs" />
+    <Compile Include="View\OverviewView.xaml.cs">
+      <DependentUpon>OverviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\LoginRepository.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="View\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="General\Config.ini" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="General\1452537993_Home.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="General\1452538398_product.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="General\1452538448_ordering.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="General\1452538498_product-sales-report.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="General\1452538619_distributor-report.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="General\1452538658_sales-report.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="General\1452538755_text-x-log.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="General\1452538798_common-share-action-glyph.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="General\1452538827_common-logout-signout-exit-glyph.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="General\1452621852_user_accounts.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

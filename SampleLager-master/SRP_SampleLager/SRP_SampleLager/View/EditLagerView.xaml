@@ -1,0 +1,66 @@
+﻿<Page x:Class="SRP_SampleLager.EditLagerView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" d:DesignHeight="400" d:DesignWidth="700"
+	Title="EditLagerView" Background="White">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.ColumnSpan="2" Text="Lager bearbeiten" Style="{DynamicResource Headline}"/>
+        
+        <TextBlock Grid.Row="1" Text="Gebäude:" Style="{DynamicResource TextBlockStyle}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Gebaeude}" Style="{DynamicResource InputElement}"/>
+        
+        <TextBlock Grid.Row="2" Text="Nummer:" Style="{DynamicResource TextBlockStyle}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Nummer}" Style="{DynamicResource InputElement}"/>
+        
+        <TextBlock Grid.Row="3" Text="Kommentar:" Style="{DynamicResource TextBlockStyle}"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Kommentar}" Style="{DynamicResource InputElement}"/>
+        
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Style="{DynamicResource StackPanelStyle}">
+            <Button Content="Schließen" Style="{StaticResource ButtonStyle}"
+                    Command="{Binding CloseCommand}"/>
+            <Button Content="Löschen" Style="{StaticResource ButtonStyle}"
+                    Command="{Binding DeleteCommand}"/>
+            <Button Content="Änderungen speichern" Style="{StaticResource ButtonStyle}" Width="135"
+                    Command="{Binding EditCommand}" CommandParameter="{Binding ElementName=lvLager, Path=SelectedIndex}"/>
+            <Button Content="Hinzufügen" Style="{StaticResource ButtonStyle}"
+                    Command="{Binding AddCommand}"/>
+        </StackPanel>
+        
+        <ListView Grid.Row="5" Grid.ColumnSpan="2" Style="{DynamicResource ListViewStyle}" ItemsSource="{Binding LagerList}"
+                  Name="lvLager">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectCommand}" CommandParameter="{Binding ElementName=lvLager, Path=SelectedIndex}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Gebäude" DisplayMemberBinding="{Binding Gebaeude}"/>
+                    <GridViewColumn Header="Nummer" DisplayMemberBinding="{Binding Nummer}"/>
+                    <GridViewColumn Header="Kommentar" DisplayMemberBinding="{Binding Kommentar}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>

@@ -1,0 +1,64 @@
+﻿<Page x:Class="SRP_SampleLager.OverviewView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      mc:Ignorable="d" d:DesignHeight="400" d:DesignWidth="750"
+	Title="OverviewView">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Command}" CommandParameter="Loaded"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.ColumnSpan="2" Text="Übersicht" Style="{DynamicResource Headline}"/>
+
+        <ListView Grid.Row="3" Grid.ColumnSpan="2" Style="{DynamicResource ListViewStyle}"
+                  ItemsSource="{Binding OverviewList}" Name="lvOverview" SelectedIndex="{Binding id}">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Muster bearbeiten" Command="{Binding Command}" CommandParameter="Muster"/>
+                    <MenuItem Header="Buchung bearbeiten" Command="{Binding Command}" CommandParameter="Buchung"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Muster" Width="Auto" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Lagerort" Width="Auto" DisplayMemberBinding="{Binding Lagerort}"/>
+                    <GridViewColumn Header="Menge" Width="50" DisplayMemberBinding="{Binding Menge}"/>
+                    <GridViewColumn Header="Eingangsdatum" DisplayMemberBinding="{Binding Eingangsdatum, StringFormat=dd.MM.yyyy}"/>
+                    <GridViewColumn Header="Ausgangsdatum" DisplayMemberBinding="{Binding Ausgangsdatum, StringFormat=dd.MM.yyyy}"/>
+                    <GridViewColumn Header="Referenznummer" DisplayMemberBinding="{Binding Referenznummer}"/>
+                    <GridViewColumn Header="Kundeneigentum" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding Kundeneigentum}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Rücksendung" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding Ruecksendung}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Kunde" DisplayMemberBinding="{Binding Kunde}"/>
+                    <GridViewColumn Header="Ansprechpartner" DisplayMemberBinding="{Binding Ansprechpartner}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>

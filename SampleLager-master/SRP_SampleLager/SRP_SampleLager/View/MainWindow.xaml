@@ -1,0 +1,42 @@
+﻿<ribbon:RibbonWindow x:Class="SRP_SampleLager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:ribbon="clr-namespace:System.Windows.Controls.Ribbon;assembly=System.Windows.Controls.Ribbon"
+        Title="Sample Lager" Height="500" Width="800" WindowStartupLocation="CenterScreen">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Command}" CommandParameter="Loaded"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <DockPanel LastChildFill="True">
+        <ribbon:Ribbon DockPanel.Dock="Top" Background="White" BorderBrush="#FF06555A" ShowQuickAccessToolBarOnTop="False">
+            <ribbon:Ribbon.ApplicationMenu>
+                <ribbon:RibbonApplicationMenu Visibility="Collapsed"/>
+            </ribbon:Ribbon.ApplicationMenu>
+            <RibbonTab Header="Start">
+                <RibbonGroup Header="Allgemeines">
+                    <RibbonButton Label="Übersicht" Command="{Binding Command}" CommandParameter="Loaded"
+                                  LargeImageSource="/SRP_SampleLager;component/General/1452537993_Home.ico"/>
+                    <RibbonButton Label="Lager" Command="{Binding Command}" CommandParameter="Lager"
+                                  LargeImageSource="/SRP_SampleLager;component/General/1452538398_product.ico"/>
+                    <RibbonButton Label="Muster"
+                                  LargeImageSource="/SRP_SampleLager;component/General/1452538498_product-sales-report.ico"/>
+                    <RibbonButton Label="Mitarbeiter"
+                                  SmallImageSource="/SRP_SampleLager;component/General/1452538619_distributor-report.ico"/>
+                    <RibbonButton Label="Kunde"
+                                  SmallImageSource="/SRP_SampleLager;component/General/1452621852_user_accounts.ico"/>
+                </RibbonGroup>
+                <RibbonGroup Header="Extras">
+                    <RibbonButton Label="Log anzeigen" Command="{Binding Command}" CommandParameter="Log"
+                                  LargeImageSource="/SRP_SampleLager;component/General/1452538755_text-x-log.ico"/>
+                    <RibbonButton Label="Export" Command="{Binding Command}" CommandParameter="Export"
+                                  LargeImageSource="/SRP_SampleLager;component/General/1452538798_common-share-action-glyph.ico"/>
+                    <RibbonButton Label="Log out" Command="{Binding Command}" CommandParameter="Logout"
+                                  LargeImageSource="/SRP_SampleLager;component/General/1452538827_common-logout-signout-exit-glyph.ico"/>
+                </RibbonGroup>
+            </RibbonTab>
+        </ribbon:Ribbon>
+        <Frame Margin="2" Content="{Binding Frame}" NavigationUIVisibility="Hidden"/>
+    </DockPanel>
+</ribbon:RibbonWindow>

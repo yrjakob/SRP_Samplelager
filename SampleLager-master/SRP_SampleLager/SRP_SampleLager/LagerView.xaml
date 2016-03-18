@@ -1,0 +1,62 @@
+﻿<Page x:Class="SRP_SampleLager.LagerView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" d:DesignHeight="400" d:DesignWidth="700"
+	Title="LagerView" Background="White">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding Command}" CommandParameter="Loaded"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.ColumnSpan="2" Text="Lager" Style="{DynamicResource Headline}"/>
+        
+        <TextBlock Grid.Row="1" Text="Lager:" Style="{DynamicResource TextBlockStyle}"/>
+        <ComboBox Grid.Row="1" Grid.Column="1" SelectedItem="{Binding SelectedLager}" SelectedValue="{Binding SelectedLager}"
+                  Style="{DynamicResource InputElement}" ItemsSource="{Binding LagerList}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding Command}" CommandParameter="SelectLager"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ComboBox>
+        <Button Grid.Row="1" Grid.Column="2" Content="Bearbeiten" Style="{DynamicResource ButtonStyle}"
+                Command="{Binding Command}" CommandParameter="Edit"/>
+        
+        <TextBlock Grid.Row="2" Text="Gebäude:" Style="{DynamicResource TextBlockStyle}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Gebaeude}" Style="{DynamicResource InputElement}"/>
+        
+        <TextBlock Grid.Row="3" Text="Nummer:" Style="{DynamicResource TextBlockStyle}"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Nummer}" Style="{DynamicResource InputElement}"/>
+        
+        <TextBlock Grid.Row="4" Text="Kommentar:" Style="{DynamicResource TextBlockStyle}"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding Kommentar}" Style="{DynamicResource InputElement}"/>
+        
+        <TabControl Grid.Row="1" Grid.RowSpan="5" Grid.Column="3" ItemsSource="{Binding RegalList}" Name="tbRegal" Visibility="{Binding TabVisibility}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding AddOrtCommand}" CommandParameter="{Binding ElementName=tbRegal, Path=SelectedValue}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TabControl>
+        <Frame Grid.Row="1" Grid.RowSpan="5" Grid.Column="3" Content="{Binding Frame}" Visibility="{Binding FrameVisibility}"/>        
+    </Grid>
+</Page>
